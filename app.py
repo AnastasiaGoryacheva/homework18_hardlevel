@@ -28,10 +28,9 @@ def configure_app(application: Flask):
 
 
 def load_data():
-    director = Director(id=21, name='Кевин Файги')
-    genre = Genre(id=19, name='Научная фантастика')
+    director = Director(name='Кевин Файги')
+    genre = Genre(name='Научная фантастика')
     movie = Movie(
-        id=21,
         title='Мстители',
         description='Локи, сводный брат Тора, возвращается, и в этот раз он не один. '
                     'Земля оказывается на грани порабощения, и только лучшие из лучших могут спасти человечество.',
@@ -55,5 +54,5 @@ if __name__ == '__main__':
     app_config = Config()
     app = create_app(app_config)
     configure_app(app)
-#    load_data()  #функция наполнения бд, шаг 3.1 в дз (уже выполнен)
+    # load_data()  #функция наполнения бд, шаг 3.1 в дз (уже выполнен)
     app.run()

@@ -1,6 +1,7 @@
 from flask import request
 from flask_restx import Resource, Namespace
 from marshmallow.exceptions import ValidationError
+from sqlalchemy.exc import NoResultFound
 
 from dao.model.movies import MovieSchema
 from implemented import movies_service
@@ -56,7 +57,8 @@ class MovieView(Resource):
             return f"{e}", 400
 
     def delete(self, id):
-        movie = movies_service.delete(id)
-        if movie is None:
-            return 'Movie not found', 404
-        return "", 204
+        try:
+            movies_service.delete(id)
+            return "", 204
+        except NoResultFound as e:
+            return str(e), 404

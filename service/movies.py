@@ -27,7 +27,6 @@ class MovieService:
         mid = data.get("id")
         movie = self.get_one(mid)
 
-        movie.id = data.get['id']
         movie.title = data.get['title']
         movie.description = data.get['description']
         movie.trailer = data.get['trailer']
